@@ -4,12 +4,13 @@ function generatePassword() {
   // prompts ask questions about password criteria
   // password length - function returns number
   var passwordLength = promptLength() 
+  console.log(passwordLength)
   // password case - function returns boolean
-  var passwordCase = promptCase()
+  var shouldHaveMixedCase = promptCase()
   // password special characters - function returns boolean
-  var passwordCharacters = promptCharacters()
+  var shouldHaveSpecialCharacter = promptCharacter()
   // password numeric - function returns boolean
-  var passwordNumeric = promptNumeric()
+  var shouldHaveNumber = promptNumeric()
 
   // generate password using criteria 
 
@@ -17,18 +18,27 @@ function generatePassword() {
 }
 
 function promptLength() {
-  return Number
-}
-function promptCase() {
-  return Boolean
-}
-function promptCharacters() {
-  return Boolean
-}
-function promptNumeric () {
-  return Boolean
+  var passwordLength = window.prompt("How many characters would you like your password to be?")
+
+  while (passwordLength < 8 || passwordLength > 128) {
+    window.alert("Please enter a numeric value between 8 and 128.")
+    passwordLength = window.prompt("How many characters would you like your password to be?")
+  }
+  return passwordLength
 }
 
+function promptCase() {
+  var passwordCase = window.confirm("Press ok if you need uppercase and lowercase letters in your password.")
+  return passwordCase
+}
+function promptCharacter() {
+  var passwordCharacter = window.confirm("Press ok if you need a special character in your password.")
+  return passwordCharacter
+}
+function promptNumeric () {
+  var passwordNumeric = window.confirm("Press ok if you need a number in your password.")
+  return passwordNumeric
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
