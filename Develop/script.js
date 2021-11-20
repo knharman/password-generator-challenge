@@ -1,27 +1,27 @@
 // Assignment code here
 function generatePassword() {
-    var password = ""
-    // prompts ask questions about password criteria
-    // password length - function returns number
-    var passwordLength = promptLength() 
-    // password case - function returns boolean
-    var shouldHaveMixedCase = promptCase()
-    // password special characters - function returns boolean
-    var shouldHaveSpecialCharacter = promptCharacter()
-    // password numeric - function returns boolean
-    var shouldHaveNumber = promptNumeric()
+  var password = ""
+  // prompts ask questions about password criteria
+  // password length - function returns number
+  var passwordLength = promptLength()
+  // password case - function returns boolean
+  var shouldHaveMixedCase = promptCase()
+  // password special characters - function returns boolean
+  var shouldHaveSpecialCharacter = promptCharacter()
+  // password numeric - function returns boolean
+  var shouldHaveNumber = promptNumeric()
 
   // generate password using criteria 
   if (shouldHaveNumber) {
     password = Math.floor(Math.random() * 10);
   }
-    if (shouldHaveSpecialCharacter) {
+  if (shouldHaveSpecialCharacter) {
     password += getRandomSpecialCharacter()
   }
-   if (shouldHaveMixedCase) {
+  if (shouldHaveMixedCase) {
     password += getRandomUppercaseLetter()
   }
-   while (password.length < passwordLength) {
+  while (password.length < passwordLength) {
     password += getRandomLetter()
   }
 
@@ -47,7 +47,7 @@ function promptCharacter() {
   var passwordCharacter = window.confirm("Press ok if you need a special character in your password.")
   return passwordCharacter
 }
-function promptNumeric () {
+function promptNumeric() {
   var passwordNumeric = window.confirm("Press ok if you need a number in your password.")
   return passwordNumeric
 }
