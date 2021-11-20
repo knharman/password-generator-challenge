@@ -1,18 +1,30 @@
 // Assignment code here
 function generatePassword() {
-  var password = ""
-  // prompts ask questions about password criteria
-  // password length - function returns number
-  var passwordLength = promptLength() 
-  console.log(passwordLength)
-  // password case - function returns boolean
-  var shouldHaveMixedCase = promptCase()
-  // password special characters - function returns boolean
-  var shouldHaveSpecialCharacter = promptCharacter()
-  // password numeric - function returns boolean
-  var shouldHaveNumber = promptNumeric()
+    var password = ""
+    // prompts ask questions about password criteria
+    // password length - function returns number
+    var passwordLength = promptLength() 
+    // password case - function returns boolean
+    var shouldHaveMixedCase = promptCase()
+    // password special characters - function returns boolean
+    var shouldHaveSpecialCharacter = promptCharacter()
+    // password numeric - function returns boolean
+    var shouldHaveNumber = promptNumeric()
 
   // generate password using criteria 
+  if (shouldHaveNumber) {
+    password = Math.floor(Math.random() * 10);
+  }
+    if (shouldHaveSpecialCharacter) {
+    password += getRandomSpecialCharacter()
+  }
+   if (shouldHaveMixedCase) {
+    password += getRandomUppercaseLetter()
+  }
+   while (password.length < passwordLength) {
+    password += getRandomLetter()
+  }
+
 
   return password
 }
@@ -38,6 +50,23 @@ function promptCharacter() {
 function promptNumeric () {
   var passwordNumeric = window.confirm("Press ok if you need a number in your password.")
   return passwordNumeric
+}
+
+function getRandomLetter() {
+  const alphabet = "abcdefghijklmnopqrstuvwxyz"
+
+  return alphabet[Math.floor(Math.random() * alphabet.length)]
+}
+
+function getRandomUppercaseLetter() {
+  const upperLetter = getRandomLetter()
+  return upperLetter.toUpperCase()
+}
+
+function getRandomSpecialCharacter() {
+  const specials = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~"
+
+  return specials[Math.floor(Math.random() * specials.length)]
 }
 
 // Get references to the #generate element
