@@ -32,7 +32,7 @@ function generatePassword() {
 function promptLength() {
   var passwordLength = window.prompt("How many characters would you like your password to be?")
 
-  while (passwordLength < 8 || passwordLength > 128) {
+  while (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
     window.alert("Please enter a numeric value between 8 and 128.")
     passwordLength = window.prompt("How many characters would you like your password to be?")
   }
@@ -54,7 +54,6 @@ function promptNumeric() {
 
 function getRandomLetter() {
   const alphabet = "abcdefghijklmnopqrstuvwxyz"
-
   return alphabet[Math.floor(Math.random() * alphabet.length)]
 }
 
@@ -65,7 +64,6 @@ function getRandomUppercaseLetter() {
 
 function getRandomSpecialCharacter() {
   const specials = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~"
-
   return specials[Math.floor(Math.random() * specials.length)]
 }
 
